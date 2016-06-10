@@ -71,6 +71,7 @@
                   <input name="fsname" type="hidden" value="Second Session">
                   <input name="courseid" type="hidden" value="FRubricQnUiT.CS2104">
                   <input name="sectionname" type="hidden" value="All">
+                  <input name="frincludeemptyresponses" type="hidden" value="false">
                 </form>
                 <br>
                 <div>
@@ -99,6 +100,7 @@
     <input name="user" type="hidden" value="FRubricQnUiT.instructor">
     <input name="frgroupbysection" type="hidden" value="All">
     <input name="csvtohtmltable" type="hidden" value="true">
+    <input name="frincludeemptyresponses" type="hidden" value="false">
   </form>
   <div class="modal fade align-center" id="fsResultsTableWindow">
     <div class="modal-dialog modal-lg">
@@ -157,7 +159,7 @@
                   <option value="recipient-giver-question">
                     Group by - Recipient &gt; Giver &gt; Question
                   </option>
-                  <option selected="" value="giver-question-recipient">
+                  <option selected="selected" value="giver-question-recipient">
                     Group by - Giver &gt; Question &gt; Recipient
                   </option>
                   <option value="recipient-question-giver">
@@ -197,6 +199,14 @@
                 <label>
                   <input id="show-stats-checkbox" name="frshowstats" type="checkbox">
                   Show Statistics
+                </label>
+              </div>
+            </div>
+            <div data-original-title="Show Empty Responses" data-toggle="tooltip" title="">
+              <div class="checkbox padding-top-0 min-height-0">
+                <label>
+                  <input id="include-empty-responses" name="frincludeemptyresponses" onchange="this.form.submit()" type="checkbox" value="true">
+                  Include Empty Responses
                 </label>
               </div>
             </div>
@@ -431,27 +441,6 @@
                                 </i>
                               </span>
                               <br>
-                            </td>
-                          </tr>
-                          <tr class="pending_response_row">
-                            <td class="middlealign color_neutral">
-                              <div class="profile-pic-icon-click align-center" data-link="/page/studentProfilePic?studentemail=${student.email.enc}&courseid=${course.id.enc}&user=FRubricQnUiT.instructor">
-                                <a class="student-profile-pic-view-link btn-link">
-                                  View Photo
-                                </a>
-                                <img alt="No Image Given" class="hidden" src="">
-                              </div>
-                            </td>
-                            <td class="middlealign color_neutral">
-                              Team 1&lt;/option&gt;&lt;option value="dump"&gt;&lt;/td&gt;&lt;td&gt;'"
-                            </td>
-                            <td class="middlealign color_neutral">
-                              Alice Betsy&lt;/option&gt;&lt;/td&gt;&lt;/div&gt;'"
-                            </td>
-                            <td class="text-preserve-space color_neutral">
-                              <i>
-                                No Response
-                              </i>
                             </td>
                           </tr>
                         </tbody>
