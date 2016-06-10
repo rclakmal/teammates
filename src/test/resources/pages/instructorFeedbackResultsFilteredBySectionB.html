@@ -71,6 +71,7 @@
                   <input name="fsname" type="hidden" value="First Session">
                   <input name="courseid" type="hidden" value="CFResultsUiT.CS2104">
                   <input name="sectionname" type="hidden" value="Section B">
+                  <input name="frincludeemptyresponses" type="hidden" value="false">
                 </form>
                 <br>
                 <div>
@@ -99,6 +100,7 @@
     <input name="user" type="hidden" value="CFResultsUiT.instr">
     <input name="frgroupbysection" type="hidden" value="Section B">
     <input name="csvtohtmltable" type="hidden" value="true">
+    <input name="frincludeemptyresponses" type="hidden" value="false">
   </form>
   <div class="modal fade align-center" id="fsResultsTableWindow">
     <div class="modal-dialog modal-lg">
@@ -148,7 +150,7 @@
               </label>
               <div class="col-sm-10" data-original-title="View results in different formats" data-toggle="tooltip" title="">
                 <select class="form-control" id="viewSelect" name="frsorttype" onchange="this.form.submit()">
-                  <option selected="" value="question">
+                  <option selected="selected" value="question">
                     Group by - Question
                   </option>
                   <option value="giver-recipient-question">
@@ -195,8 +197,16 @@
             <div data-original-title="Show statistics" data-toggle="tooltip" title="">
               <div class="checkbox padding-top-0 min-height-0">
                 <label>
-                  <input checked="" id="show-stats-checkbox" name="frshowstats" type="checkbox">
+                  <input checked="checked" id="show-stats-checkbox" name="frshowstats" type="checkbox">
                   Show Statistics
+                </label>
+              </div>
+            </div>
+            <div data-original-title="Show Empty Responses" data-toggle="tooltip" title="">
+              <div class="checkbox padding-top-0 min-height-0">
+                <label>
+                  <input id="include-empty-responses" name="frincludeemptyresponses" onchange="this.form.submit()" type="checkbox" value="true">
+                  Include Empty Responses
                 </label>
               </div>
             </div>
@@ -216,7 +226,7 @@
                   <option value="Section A">
                     Section A
                   </option>
-                  <option selected="" value="Section B">
+                  <option selected="selected" value="Section B">
                     Section B
                   </option>
                   <option value="None">
@@ -256,6 +266,7 @@
         <input id="showStats-1" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -291,6 +302,7 @@
         <input id="showStats-2" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -326,6 +338,7 @@
         <input id="showStats-3" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -361,6 +374,7 @@
         <input id="showStats-4" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -396,6 +410,7 @@
         <input id="showStats-5" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -431,6 +446,7 @@
         <input id="showStats-6" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -466,6 +482,7 @@
         <input id="showStats-7" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -524,6 +541,7 @@
         <input id="showStats-8" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -582,6 +600,7 @@
         <input id="showStats-9" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
@@ -628,6 +647,7 @@
         <input id="showStats-10" name="frshowstats" type="hidden" value="on">
         <input name="questionid" type="hidden" value="${question.id}">
         <input name="frgroupbysection" type="hidden" value="Section B">
+        <input name="frincludeemptyresponses" type="hidden" value="false">
       </form>
       <div class="display-icon pull-right">
         <span class="glyphicon pull-right glyphicon-chevron-up">
