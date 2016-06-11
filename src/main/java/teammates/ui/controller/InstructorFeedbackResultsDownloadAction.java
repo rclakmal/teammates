@@ -17,8 +17,7 @@ public class InstructorFeedbackResultsDownloadAction extends Action {
         String courseId = getRequestParamValue(Const.ParamsNames.COURSE_ID);
         String feedbackSessionName = getRequestParamValue(Const.ParamsNames.FEEDBACK_SESSION_NAME);
         String section = getRequestParamValue(Const.ParamsNames.SECTION_NAME);
-        Boolean isEmptyResponsesShown = getRequestParamAsBoolean(Const.ParamsNames.FEEDBACK_RESULTS_INCLUDE_EMPTY_RESPONSES);
-       
+
         Assumption.assertPostParamNotNull(Const.ParamsNames.COURSE_ID, courseId);
         Assumption.assertPostParamNotNull(Const.ParamsNames.FEEDBACK_SESSION_NAME, feedbackSessionName);
 
@@ -32,19 +31,14 @@ public class InstructorFeedbackResultsDownloadAction extends Action {
         String fileName = "";
         try {
             if (section == null || "All".equals(section)) {
-                fileContent = logic.getFeedbackSessionResultSummaryAsCsv(courseId,
-                                                                         feedbackSessionName,
-                                                                         instructor.email,
-                                                                         isEmptyResponsesShown);
+                fileContent = logic.getFeedbackSessionResultSummaryAsCsv(courseId, feedbackSessionName,
+                                                                         instructor.email);
                 fileName = courseId + "_" + feedbackSessionName;
                 statusToAdmin = "Summary data for Feedback Session " + feedbackSessionName
                               + " in Course " + courseId + " was downloaded";
             } else {
-                fileContent = logic.getFeedbackSessionResultSummaryInSectionAsCsv(courseId,
-                                                                                  feedbackSessionName,
-                                                                                  instructor.email,
-                                                                                  section,
-                                                                                  isEmptyResponsesShown);
+                fileContent = logic.getFeedbackSessionResultSummaryInSectionAsCsv(courseId, feedbackSessionName,
+                                                                                  instructor.email, section);
                 fileName = courseId + "_" + feedbackSessionName + "_" + section;
                 statusToAdmin = "Summary data for Feedback Session " + feedbackSessionName
                               + " in Course " + courseId + " within " + section + " was downloaded";

@@ -812,21 +812,19 @@ public class FeedbackSessionsLogic {
     }
 
     public String getFeedbackSessionResultsSummaryAsCsv(
-            String feedbackSessionName, String courseId, String userEmail, Boolean isEmptyResponsesShown)
+            String feedbackSessionName, String courseId, String userEmail)
             throws EntityDoesNotExistException, ExceedingRangeException {
         
         return getFeedbackSessionResultsSummaryInSectionAsCsv(feedbackSessionName,
                                                               courseId,
                                                               userEmail,
-                                                              null,
-                                                              isEmptyResponsesShown);
+                                                              null);
     }
 
     public String getFeedbackSessionResultsSummaryInSectionAsCsv(String feedbackSessionName,
                                                                  String courseId,
                                                                  String userEmail,
-                                                                 String section,
-                                                                 Boolean isEmptyResponsesShown)
+                                                                 String section)
             throws EntityDoesNotExistException, ExceedingRangeException {
         
         long indicatedRange = (section == null) ? 10000 : -1;
@@ -858,7 +856,7 @@ public class FeedbackSessionsLogic {
 
         for (Map.Entry<FeedbackQuestionAttributes, List<FeedbackResponseAttributes>> entry : results
                 .getQuestionResponseMap().entrySet()) {
-            exportBuilder.append(getFeedbackSessionResultsForQuestionInCsvFormat(results, entry, isEmptyResponsesShown));
+            exportBuilder.append(getFeedbackSessionResultsForQuestionInCsvFormat(results, entry));
         }
         return exportBuilder.toString();
         
@@ -866,8 +864,7 @@ public class FeedbackSessionsLogic {
 
     private StringBuilder getFeedbackSessionResultsForQuestionInCsvFormat(
             FeedbackSessionResultsBundle fsrBundle,
-            Map.Entry<FeedbackQuestionAttributes, List<FeedbackResponseAttributes>> entry,
-            Boolean isEmptyResponsesShown) {
+            Map.Entry<FeedbackQuestionAttributes, List<FeedbackResponseAttributes>> entry) {
         
         FeedbackQuestionAttributes question = entry.getKey();
         FeedbackQuestionDetails questionDetails = question.getQuestionDetails();
@@ -926,11 +923,10 @@ public class FeedbackSessionsLogic {
         }
         
         // add the rows for the possible givers and recipients who have missing responses
-        if (isEmptyResponsesShown) {
-            exportBuilder.append(getRemainingRowsInCsvFormat(fsrBundle, entry, question, questionDetails,
-                                                possibleGiversWithoutResponses, possibleRecipientsForGiver, prevGiver))
-                         .append(Const.EOL + Const.EOL);
-        }
+        exportBuilder.append(getRemainingRowsInCsvFormat(fsrBundle, entry, question, questionDetails,
+                                            possibleGiversWithoutResponses, possibleRecipientsForGiver, prevGiver))
+                     .append(Const.EOL + Const.EOL);
+        
         return exportBuilder;
     }
 

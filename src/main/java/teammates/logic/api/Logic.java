@@ -1524,8 +1524,7 @@ public class Logic {
      */
     public String getFeedbackSessionResultSummaryAsCsv(String courseId,
                                                        String feedbackSessionName,
-                                                       String instructorEmail,
-                                                       Boolean isEmptyResponsesShown)
+                                                       String instructorEmail)
             throws EntityDoesNotExistException, ExceedingRangeException {
         
         Assumption.assertNotNull(ERROR_NULL_PARAMETER, courseId);
@@ -1533,8 +1532,7 @@ public class Logic {
         
         return feedbackSessionsLogic.getFeedbackSessionResultsSummaryAsCsv(feedbackSessionName,
                                                                            courseId,
-                                                                           instructorEmail,
-                                                                           isEmptyResponsesShown);
+                                                                           instructorEmail);
     }
 
     /**
@@ -1545,8 +1543,7 @@ public class Logic {
     public String getFeedbackSessionResultSummaryInSectionAsCsv(String courseId,
                                                                 String feedbackSessionName,
                                                                 String instructorEmail,
-                                                                String section,
-                                                                Boolean isEmptyResponsesShown)
+                                                                String section)
             throws EntityDoesNotExistException, ExceedingRangeException {
         
         Assumption.assertNotNull(ERROR_NULL_PARAMETER, courseId);
@@ -1556,8 +1553,7 @@ public class Logic {
         return feedbackSessionsLogic.getFeedbackSessionResultsSummaryInSectionAsCsv(feedbackSessionName,
                                                                                     courseId,
                                                                                     instructorEmail,
-                                                                                    section,
-                                                                                    isEmptyResponsesShown);
+                                                                                    section);
     }
     
     /**
