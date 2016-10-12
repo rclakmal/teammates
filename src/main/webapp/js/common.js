@@ -245,13 +245,10 @@ function sortTable(oneOfTableCell, colIdx, comp, ascending, row) {
     var columnType = 0;
     var store = [];
     var $RowList = $('tr', $table);
-    var shouldConsiderToolTip = false;
     
     // For date comparisons in instructor home page we should use
     // the tool-tip value instead of display text since display text does not contain the year.
-    if (comp && comp.toString().includes('instructorHomeDateComparator')) {
-        shouldConsiderToolTip = true;
-    }
+    var shouldConsiderToolTipYear = comp && comp.toString.includes('instructorHomeDateComparator');
 
     // Iterate through column's contents to decide which comparator to use
     var textToCompare;
@@ -263,13 +260,10 @@ function sortTable(oneOfTableCell, colIdx, comp, ascending, row) {
         // $.trim trims leading/trailing whitespaces
         // jQuery(...).text() works like .innerText, but works in Firefox (.innerText does not)
         // $RowList[i].cells[colIdx - 1] is where we get the table cell from
-        // If shouldConsiderToolTip is true, we consider the tooltip value instead of innerText
-        if (shouldConsiderToolTip) {
-            textToCompare = $.trim(jQuery($RowList[i].cells[colIdx - 1]).find('span')
-                                                                        .attr('data-original-title'));
-        } else {
-            textToCompare = $.trim(jQuery($RowList[i].cells[colIdx - 1]).text());
-        }
+        // If shouldConsiderToolTipYear is true, we consider the tooltip value instead of innerText
+        textToCompare = shouldConsiderToolTipYear ? 
+                $.trim($($RowList[i].cells[colIdx - 1]).find('span').attr('data-original-title')) : 
+                $.trim($($RowList[i].cells[colIdx - 1]).text());
         
         // Store rows together with the innerText to compare
         store.push([textToCompare, $RowList[i], i]);
